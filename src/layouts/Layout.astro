@@ -1,50 +1,181 @@
----
-interface Props {
+	---
+	import Button from "../components/Button.astro";
+	import LibraryIcon from "../imagenes/icon/Library.astro";
+	import SocialMedia from "../components/SocialMedia.astro";
+	import Main from "../components/Main.astro";
+	
+	interface Props {
 	title: string;
-}
+	}
 
-const { title } = Astro.props;
----
+	const { title } = Astro.props;
+	---
 
-<!doctype html>
-<html lang="en">
+	<!doctype html>
+	<html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+	<meta charset="UTF-8" />
+	<meta name="description" content="Astro description" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{title}</title>
 	</head>
-	<body>
+	<body >
+	<div id="app" class="relative h-screen p-2 gap-2 ">
+		<aside class="[grid-area:aside] flex-col flex h-full">
+			<div class="flex flex-col h-full bg-gradient-to-br from-[#1e1e1e] to-[#333] text-white ">
+				<section id="about" class="py-16 px-6 flex flex-col">
+				<div class="max-w-2xl mx-auto text-center space-y-4">
+					<img
+					src="/src/imagenes/Felii.jpg"
+					width={140}
+					height={140}
+					alt="Foto de perfil"
+					class="rounded-full border-4 border-[#1ed760] mx-auto"
+					style={{ aspectRatio: "120/120", objectFit: "cover" }}
+					/>
+					<div class="flex items-center justify-center gap-2">
+					<h2 class="text-3xl font-bold">Hola, soy Felipe Vergara</h2>
+					</div>
+					<div class="flex items-center justify-center gap-2">
+					<Button variant="primary" class="bg-[#1ed760] text-[#1e1e1e] font-bold hover:bg-[#1e1e1e] hover:text-[#1ed760]">
+						Open to work
+					</Button>
+					</div>
+					<p class="text-lg text-[#b3b3b3]">
+					Desarrollador full stack. Me apasiona crear soluciones digitales innovadoras y de alta calidad.
+					En busca de oportunidades
+					</p>
+					<a href="#" class="inline-flex items-center gap-2 bg-[#1ed760] text-[#1e1e1e] font-bold py-2 px-4 rounded-full hover:bg-[#1ac450] transition-colors">
+					<img src="../src/imagenes/download.png" alt="Download Icon" class="w-4 h-4" />
+					Descargar CV
+					</a>
+					<a href="#" class="inline-flex items-center gap-2 border bg-black border-[#5cff95] text-[#f2fff7] font-bold py-2 px-4 rounded-full hover:bg-[#1ed760] hover:text-[#1e1e1e] transition-colors shadow-[0_0_10px_2px_rgba(30,215,96,0.6)] transition-shadow duration-300 ease-in-out">
+					<LibraryIcon class="w-4 h-4" />
+					Contactar
+					</a>
+					<div><SocialMedia  ></SocialMedia></div>
+				</div>
+				</section>
+			</div>
+			
+			
+		</aside>
+		<main class="[grid-area:main] rounded-lg bg-zinc-900 overflow-y-auto overflow-x-auto  w-full">
+		MAIN
+		<h1 class="text-4xl w-full">
+			<Main></Main>
+		</h1>
+		</main>
+
+
+
+		<footer class=" [grid-area:footer]  bg-muted text-muted-foreground py-6 px-4 md:px-6 sticky bottom-0 w-full  flex-col flex min-h-[150px]">
+			<div class="container max-w-5xl flex justify-between items-center">
+				<div class="flex gap-6">
+					<div>
+					<h3 class="text-lg font-semibold mb-2">Experiencia laboral</h3>
+					<div class="flex gap-4">
+						<div class="grid grid-cols-[auto_1fr] items-center gap-4 relative">
+						<div class="bg-primary rounded-full w-8 h-8 flex items-center justify-center text-primary-foreground">
+							1
+						</div>
+						<div>
+							<h4 class="text-base font-semibold">Desarrollador web frontend</h4>
+							<p class="text-sm text-muted-foreground">Acme Inc. | 2019 - 2022</p>
+						</div>
+						<div class="absolute top-1/2 -translate-y-1/2 left-[calc(100%+1rem)] w-12 h-1 bg-primary" />
+						</div>
+						<div class="grid grid-cols-[auto_1fr] items-center gap-4 relative">
+						<div class="bg-primary rounded-full w-8 h-8 flex items-center justify-center text-primary-foreground">
+							2
+						</div>
+						<div>
+							<h4 class="text-base font-semibold">Diseñador UI/UX</h4>
+							<p class="text-sm text-muted-foreground">Globex Corp. | 2017 - 2019</p>
+						</div>
+						<div class="absolute top-1/2 -translate-y-1/2 left-[calc(100%+1rem)] w-12 h-1 bg-primary" />
+						</div>
+						<div class="grid grid-cols-[auto_1fr] items-center gap-4 relative">
+						<div class="bg-primary rounded-full w-8 h-8 flex items-center justify-center text-primary-foreground">
+							3
+						</div>
+						<div>
+							<h4 class="text-base font-semibold">Desarrollador backend</h4>
+							<p class="text-sm text-muted-foreground">Stark Industries | 2015 - 2017</p>
+						</div>
+						<div class="absolute top-1/2 -translate-y-1/2 left-[calc(100%+1rem)] w-12 h-1 bg-primary" />
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+		</footer>
+
 		<slot />
+
+	</div>
 	</body>
-</html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+	</html>
+
+	<style>
+	#app {
+	display: grid;
+	grid-template-areas: 
+		"aside main main"
+		"footer footer footer";
+	grid-template-columns: 350px 1fr;
+	grid-template-rows: 1fr auto;
+	
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
+	</style>
+
+	<style is:global>
+		html {
+			font-family: "CircularStd", system-ui, sans-serif;
+			background: #010101;
+			color: white;
+		}
+
+		@font-face {
+			font-family: "CircularStd";
+			src: url("/fonts/CircularStd-Medium.woff2") format("woff2");
+			font-weight: 500;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: "CircularStd";
+			src: url("/fonts/CircularStd-Book.woff2") format("woff2");
+			font-weight: 400;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: "CircularStd";
+			src: url("/fonts/CircularStd-Light.woff2") format("woff2");
+			font-weight: 300;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: "CircularStd";
+			src: url("/fonts/CircularStd-Bold.woff2") format("woff2");
+			font-weight: 700;
+			font-style: normal;
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: "CircularStd";
+			src: url("/fonts/CircularStd-Black.woff2") format("woff2");
+			font-weight: 900;
+			font-style: normal;
+			font-display: swap;
+		}
+    </style>
+	
